@@ -1,6 +1,4 @@
-/ArithLang.tokens
-/ArithLangBaseListener.java
-/ArithLangLexer.java
-/ArithLangLexer.tokens
-/ArithLangListener.java
-/ArithLangParser.java
+/MsgLang.tokens
+/MsgLangLexer.java
+/MsgLangLexer.tokens
+/MsgLangParser.java
