@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<project name="lang" default="parser">
+
+	<!-- ANTLR version -->
+	<property name="antlr.version" value="4.5" />
+
+	<!-- MsgLang parser -->
+	<target name="msglang-check-parser">
+		<condition property="msglang.parser.uptodate">
+			<and>
+				<uptodate srcfile="src/msglang/MsgLang.g" targetfile="src/msglang/parser/MsgLangParser.java" />
+				<uptodate srcfile="src/msglang/MsgLang.g" targetfile="src/msglang/parser/MsgLangLexer.java" />
+				<uptodate srcfile="src/msglang/MsgLang.g" targetfile="src/msglang/parser/MsgLangListener.java" />
+			</and>
+		</condition>
+	</target>
+
+	<target name="msglang" depends="msglang-check-parser" unless="msglang.parser.uptodate">
+		<java jar="lib/antlr-${antlr.version}-complete.jar" dir="src/msglang/" fork="true" failonerror="true">
+			<arg value="-o" />
+			<arg value="parser/" />
+			<arg value="-no-listener" />
+			<arg value="-package" />
+			<arg value="msglang.parser; import static msglang.AST.*" />
+			<arg value="MsgLang.g" />
+		</java>
+	</target>
+
+	<target name="parser" depends="msglang" >
+	</target>
+	
+</project>
