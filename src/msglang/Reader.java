@@ -1,6 +1,7 @@
 package msglang;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.FileReader;
@@ -31,7 +32,7 @@ public class Reader {
 		return new MsgLangParser(s);
 	}
 			
-	protected String getProgramDirectory() { return "build/msglang/examples/"; }
+	protected String getProgramDirectory() { return "build"+File.separator+"msglang"+File.separator+"examples"+File.separator; }
 	
 	public static String readFile(String fileName) throws IOException {
 		try (BufferedReader br = new BufferedReader(
